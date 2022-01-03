@@ -1,0 +1,43 @@
+{
+  "name": "express-log4js",
+  "version": "0.1.0",
+  "description": "a middleware for your express application, built on log4js. Allows you to plugin to another log4js instance seemlessly.",
+  "main": "src/index.js",
+  "scripts": {
+    "apidocs": "jsdoc -C ./jsdoc.json",
+    "test": "node test/index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dkrypt/express-log4js.git"
+  },
+  "keywords": [
+    "express",
+    "logger",
+    "logs",
+    "logging",
+    "log4js",
+    "request",
+    "response"
+  ],
+  "author": "dkrypt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dkrypt/express-log4js/issues"
+  },
+  "homepage": "https://github.com/dkrypt/express-log4js#readme",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^8.6.0",
+    "eslint-config-google": "^0.14.0",
+    "jsdoc": "^3.6.7",
+    "mocha": "^9.1.3",
+    "node-fetch": "^3.1.0"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "log4js": "^6.3.0",
+    "on-finished": "^2.3.0",
+    "on-headers": "^1.0.2"
+  }
+}
