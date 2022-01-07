@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 
+const {mergeDeep} = require('./utils');
 const LogPattern = require('./LogPattern');
 
 /**
@@ -7,6 +8,7 @@ const LogPattern = require('./LogPattern');
  * @property {('file'|'console')} type appender type
  * @property {('info'|'debug'|'error'|'trace')} level log level
  * @property {('dev'|'short'|'detail')} pattern log pattern
+ * @property {String} [filename] absolute path of log file
  */
 
 /**
@@ -42,9 +44,10 @@ const LogPattern = require('./LogPattern');
  * adds required config to your provided object, according to
  * the options provided
  * @param {PluginConfigOptions} options express-log4js options
+ * @param {ExpressLog4jsConfig} [appConfig] application log4js config. If provided will be merged with express-log4js config
  * @return {ExpressLog4jsConfig} required log4js config
  */
-const getConfig = (options) => {
+const getConfig = (options, appConfig) => {
   if (!options) {
     options = getDefaultOptions();
   }
@@ -64,7 +67,7 @@ const getConfig = (options) => {
   }
   const logPattern = new LogPattern();
   switch (options.pattern) {
-    case 'info':
+    case 'detail':
       config.appenders.req.layout.pattern = logPattern.detail();
       break;
     case 'dev':
@@ -80,6 +83,9 @@ const getConfig = (options) => {
   config.appenders.requestBody.layout.pattern = logPattern.requestBody();
   config.categories.REQUEST.level = options.level;
   config.categories.REQUEST_BODY.level = options.level;
+  if (appConfig) {
+    return mergeDeep(appConfig, config);
+  }
   return config;
 };
 
