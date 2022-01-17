@@ -61,6 +61,10 @@ const getConfig = (options, appConfig) => {
       config.appenders.req.filename = options.filename || './logs/access.log';
       config.appenders.req.maxLogSize = 1073741824;
       config.appenders.req.backups = 5;
+      config.appenders.requestBody.type = 'file';
+      config.appenders.requestBody.filename = options.filename || './logs/access.log';
+      config.appenders.requestBody.maxLogSize = 1073741824;
+      config.appenders.requestBody.backups = 5;
       break;
     default:
       config.appenders.req.type = 'console';

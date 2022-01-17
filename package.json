@@ -1,6 +1,6 @@
 {
   "name": "express-log4js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "a middleware for your express application, built on log4js. Allows you to plugin to another log4js instance seemlessly.",
   "main": "src/index.js",
   "scripts": {
